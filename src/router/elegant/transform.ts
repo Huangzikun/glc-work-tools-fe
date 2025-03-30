@@ -171,7 +171,8 @@ const routeMap: RouteMap = {
   "login": "/login/:module(pwd-login|code-login|register|reset-pwd|bind-wechat)?",
   "obe": "/obe",
   "obe_filelist": "/obe/filelist",
-  "obe_home": "/obe/home"
+  "obe_home": "/obe/home",
+  "obe_uploadfile": "/obe/uploadfile"
 };
 
 /**

@@ -23,4 +23,5 @@ export const views: Record<LastLevelRouteKey, RouteComponent | (() => Promise<Ro
   home: () => import("@/views/home/index.vue"),
   obe_filelist: () => import("@/views/obe/filelist/index.vue"),
   obe_home: () => import("@/views/obe/home/index.vue"),
+  obe_uploadfile: () => import("@/views/obe/uploadfile/index.vue"),
 };

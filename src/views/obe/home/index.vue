@@ -92,7 +92,6 @@ const submitForm = async () => {
         path: '/obe/filelist',
         query: {
           base_dir: encodeURIComponent(response.data.data.base_dir),
-          directories: JSON.stringify(response.data.data.directory_list)
         }
       });
     } else {

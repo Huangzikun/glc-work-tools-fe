@@ -77,7 +77,7 @@ export const generatedRoutes: GeneratedRoute[] = [
   },
   {
     name: 'obe',
-    path: '/obe/home',
+    path: '/obe',
     component: 'layout.base',
     meta: {
       title: '归档材料',
@@ -102,6 +102,15 @@ export const generatedRoutes: GeneratedRoute[] = [
         meta: {
           title: '创建目录',
           i18nKey: 'route.obe_home'
+        }
+      },
+      {
+        name: 'obe_uploadfile',
+        path: '/obe/uploadfile',
+        component: 'view.obe_uploadfile',
+        meta: {
+          title: 'obe_uploadfile',
+          i18nKey: 'route.obe_uploadfile'
         }
       }
     ]

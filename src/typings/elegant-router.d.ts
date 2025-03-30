@@ -23,9 +23,10 @@ declare module "@elegant-router/types" {
     "home": "/home";
     "iframe-page": "/iframe-page/:url";
     "login": "/login/:module(pwd-login|code-login|register|reset-pwd|bind-wechat)?";
+    "obe": "/obe";
     "obe_filelist": "/obe/filelist";
     "obe_home": "/obe/home";
-    "obe": "/obe/home";
+    "obe_uploadfile": "/obe/uploadfile";
   };
 
   /**
@@ -88,6 +89,7 @@ declare module "@elegant-router/types" {
     | "home"
     | "obe_filelist"
     | "obe_home"
+    | "obe_uploadfile"
   >;
 
   /**
@@ -159,7 +161,7 @@ declare module "@elegant-router/types" {
         component: `view.${K}`;
       }
     : never;
-
+  
   /**
    * the center level route
    */
@@ -182,7 +184,7 @@ declare module "@elegant-router/types" {
         children: (CenterLevelRoute<GetChildRouteKey<K>> | LastLevelRoute<GetChildRouteKey<K>>)[];
       }
     : never;
-
+  
   /**
    * the custom first level route
    */

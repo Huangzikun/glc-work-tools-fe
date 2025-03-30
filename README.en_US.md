@@ -1,4 +1,3 @@
-<div align="center">
 	<img src="./public/favicon.svg" width="160" />
 	<h1>SoybeanAdmin</h1>
   <span><a href="./README.md">中文</a> | English</span>
