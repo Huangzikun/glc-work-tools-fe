@@ -21,14 +21,17 @@
       <n-list>
         <n-list-item v-for="(dir, index) in directories" :key="index">
           <div class="flex justify-between items-center">
-            <span>{{ dir }}</span>
+            <div>
+              <n-text strong>{{ dir.directory }}</n-text>
+              <n-text depth="3" class="ml-4">包含 {{ dir.file_count }} 个文件</n-text>
+            </div>
             <n-button
               type="primary"
               size="small"
               @click="
                 router.push({
                   path: '/obe/uploadfile',
-                  query: { filepath: encodeURIComponent(baseDir + '/' + dir) }
+                  query: { filepath: encodeURIComponent(baseDir + '/' + dir.directory) }
                 })
               "
             >
@@ -52,7 +55,7 @@ const message = useMessage();
 const route = useRoute();
 const router = useRouter();
 const baseDir = ref(route.query.base_dir ? decodeURIComponent(route.query.base_dir) : '');
-const directories = ref(route.query.directories ? JSON.parse(route.query.directories) : []);
+const directories = ref([]); // 移除路由参数初始化逻辑
 const formPath = ref(baseDir.value); // 默认使用当前baseDir
 const loading = ref(false);
 const isHttpProxy = import.meta.env.DEV && import.meta.env.VITE_HTTP_PROXY === 'Y';
@@ -89,7 +92,7 @@ async function handleSubmit() {
     if (response.data.code === 0) {
       // 更新数据
       baseDir.value = response.data.data.base_dir;
-      directories.value = response.data.data.directory_list;
+      directories.value = response.data.data.directory_list; // 直接使用目录对象数组
       message.success(response.data.msg);
     } else {
       message.error(response.data.msg);
