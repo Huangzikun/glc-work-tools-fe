@@ -70,18 +70,18 @@ const submitForm = async () => {
     formDataToSend.append('course_name', formData.value.course_name);
     formDataToSend.append('teacher_name', formData.value.teacher_name);
     formDataToSend.append('need_mkdir_list', formData.value.need_mkdir_list);
-    // 添加文件到表单数据
-    fileList.value.forEach((fileInstance) => {
-      formDataToSend.append('file', fileInstance.file); // 使用复数形式字段名
-    });
-
+    // 优化文件处理：确保获取原生File对象
+    for (const fileItem of fileList.value) {
+      if (fileItem.file) {
+        formDataToSend.append('file', fileItem.file); // 保持字段名与后端一致
+      }
+    }
 
     // 发送 POST 请求到后端接口
     const response = await axios.post('/obe/mkdir', formDataToSend, {
       baseURL: otherBaseURL['glc-work-tools'], // 使用 glc-work-tools 的 baseURL
       headers: {
-        'Content-Type': 'multipart/form-data',
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': '*'
       }
     });
 
